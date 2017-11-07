@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171105174605) do
+ActiveRecord::Schema.define(version: 20171107151314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20171105174605) do
     t.string "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "source_id"
+    t.index ["source_id"], name: "index_posts_on_source_id"
     t.index ["title", "description", "pub_date", "link"], name: "index_posts_on_title_and_description_and_pub_date_and_link", unique: true
   end
 
@@ -32,6 +34,13 @@ ActiveRecord::Schema.define(version: 20171105174605) do
     t.datetime "updated_at", null: false
     t.index ["link"], name: "index_sources_on_link", unique: true
     t.index ["name"], name: "index_sources_on_name", unique: true
+  end
+
+  create_table "sources_users", id: false, force: :cascade do |t|
+    t.bigint "source_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["source_id"], name: "index_sources_users_on_source_id"
+    t.index ["user_id"], name: "index_sources_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,4 +60,5 @@ ActiveRecord::Schema.define(version: 20171105174605) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "posts", "sources"
 end

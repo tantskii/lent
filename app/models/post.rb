@@ -1,27 +1,40 @@
 require 'open-uri'
 
 class Post < ApplicationRecord
+  belongs_to :source
   
   def self.download_posts
-    links = Source.all.map(&:link)
+    sources = Source.all
 
-    links.each do |link|
-      Post.create_posts_by(link)
+    sources.each do |source|
+      Post.create_posts_by(source)
     end
   end
 
-  def self.create_posts_by(link)
+  # TODO сделать эту операцию в один запрос к БД
+  def exist_in_db?
+    if Post.find_by(title: title, description: description, link: link, 
+                    pub_date: pub_date)
+      return true
+    end
+    
+    false  
+  end  
+
+  private
+
+  def self.create_posts_by(source)
     posts = []
-    rss   = SimpleRSS.parse open(link)
+    rss   = SimpleRSS.parse open(source.link)
 
     rss.items.each do |item|
-      posts << self.create_post(item)
+      posts << self.create_post(item, source.id)
     end
 
     posts
   end
 
-  def self.create_post(item)
+  def self.create_post(item, source_id)
     item.title       = item.title.force_encoding('utf-8') unless item.title.nil?
     item.link        = item.link.force_encoding('utf-8') unless item.link.nil?
     item.description = item.description.force_encoding('utf-8') unless item.description.nil?
@@ -31,21 +44,11 @@ class Post < ApplicationRecord
         link:        item.link,
         description: item.description,
         pub_date:    item.pubDate,
+        source_id:   source_id
     }
-
-    count = 0
 
     new_post = Post.new(hash)
 
     new_post.save unless new_post.exist_in_db?
   end
-
-  # TODO сделать эту операцию в один запрос к БД
-  def exist_in_db?
-    if Post.find_by(title: title, description: description, link: link, pub_date: pub_date)
-      return true
-    end
-    
-    false  
-  end  
 end

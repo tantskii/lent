@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    @title = 'Posts'
     @posts = Post.order(pub_date: :desc)
   end
 
@@ -55,7 +56,14 @@ class PostsController < ApplicationController
     Post.download_posts
 
     redirect_to action: :index
-  end  
+  end 
+
+  def my_lent
+    @title = 'My lent'
+    @posts = current_user.posts
+
+    render 'posts/index'
+  end 
 
   # DELETE /posts/1
   # DELETE /posts/1.json
