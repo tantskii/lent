@@ -21,9 +21,12 @@
                 <li><a href="#">Settigs</a></li>
               </ul>
               <ul class="nav hidden-xs" id="sidebar-footer">
+              <% if current_user %>
                 <li>
-                  <a href="http://www.bootply.com"><h3>Basis</h3>Made with <i class="glyphicon glyphicon-heart-empty"></i> by Bootply</a>
+                  <!--<a href="http://www.bootply.com"><h3>Basis</h3>Made with <i class="glyphicon glyphicon-heart-empty"></i> by Bootply</a> -->
+                  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
                 </li>
+              <% end %>  
               </ul>
             </div>
             <!-- /sidebar -->
