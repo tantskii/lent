@@ -60,10 +60,14 @@ class PostsController < ApplicationController
 
   def my_lent
     @title = 'My lent'
-    @posts = current_user.posts
+    @posts = current_user.posts.order(pub_date: :desc)
 
     render 'posts/index'
   end 
+
+  def settings
+    @sources = Source.all
+  end  
 
   # DELETE /posts/1
   # DELETE /posts/1.json

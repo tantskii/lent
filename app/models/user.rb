@@ -5,5 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_and_belongs_to_many :sources
-  has_many :posts, through: :sources       
+  has_many :posts, through: :sources   
+
+  def add_source(source)
+    sources << source
+  end
+
+  def delete_source(source)
+    sources.delete(source)
+  end    
 end
