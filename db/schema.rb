@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107151314) do
+ActiveRecord::Schema.define(version: 20171113130846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20171107151314) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "source_id"
+    t.index "to_tsvector('russian'::regconfig, (((title)::text || ' '::text) || (description)::text))", name: "posts_idx", using: :gin
     t.index ["source_id"], name: "index_posts_on_source_id"
     t.index ["title", "description", "pub_date", "link"], name: "index_posts_on_title_and_description_and_pub_date_and_link", unique: true
   end
