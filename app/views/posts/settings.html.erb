@@ -19,14 +19,14 @@
             <td>
               <%= form_tag(controller: "source_users", action: "destroy", method: 'post') do %>
                 <%= hidden_field_tag(:source_id, source.id) %>
-                <%= submit_tag("Удалить") %>
+                <%= submit_tag("Удалить", class:"btn btn-default") %>
               <% end %>  
             </td>
           <% else %>  
             <td>
               <%= form_tag(controller: "source_users", action: "create", method: 'post') do %>
                 <%= hidden_field_tag(:source_id, source.id) %>
-                <%= submit_tag("Добавить") %>
+                <%= submit_tag("Читать", class:"btn btn-primary") %>
               <% end %>
             </td>
           <% end %>  

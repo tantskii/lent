@@ -7,9 +7,8 @@
     </p>
                               
     <h4>
-      <small class="text-muted"><%= l post.pub_date %> 
-        <a href="<%= post.link %>" class="text-muted">Read More</a>
-      </small>
+      <small class="text-muted"><%= post.pub_date.strftime('%d.%m.%Y %H:%M') %></small>
+      <a href="<%= post.link %>" class="btn btn-link">Read More</a>
     </h4>
   </div>
 </div>

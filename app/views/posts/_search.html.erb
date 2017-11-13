@@ -1,0 +1,13 @@
+  <section class="search-form">
+    <%= form_for :posts, controller: 'posts', action: :index, method: :get do |f| %>
+      <div class="input-group input-group-lg">
+        <%= label_tag :keywords, nil, class: "sr-only" %>
+
+        <%= text_field_tag :keywords, nil, class: "form-control input-lg" %>
+
+        <span class="input-group-btn">
+          <%= submit_tag "Find Posts", class: "btn btn-primary btn-lg" %>
+        </span>
+      </div>
+    <% end %>
+  </section>
