@@ -5,7 +5,17 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @title = 'Posts'
-    @posts = Post.order(pub_date: :desc).paginate(page: params[:page])
+
+    if params[:keywords].present?
+      @keywords = params[:keywords]
+      
+      expr = @keywords.split.join(" & ")
+
+      @posts = Post.where("to_tsvector('russian', title || ' ' || description) @@ to_tsquery(?)", expr)
+                          .paginate(page: params[:page])
+    else
+      @posts = Post.order(pub_date: :desc).paginate(page: params[:page])
+    end
   end
 
   # GET /posts/1

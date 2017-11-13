@@ -7,7 +7,7 @@
 </div>
 
 <section class="search-form">
-  <%= form_for :posts, method: :get do |f| %>
+  <%= form_for :posts, controller: 'posts', action: :index, method: :get do |f| %>
     <div class="input-group input-group-lg">
       <%= label_tag :keywords, nil, class: "sr-only" %>
 
