@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @title = 'Posts'
-    @posts = Post.order(pub_date: :desc)
+    @posts = Post.order(pub_date: :desc).paginate(page: params[:page])
   end
 
   # GET /posts/1
@@ -60,7 +60,7 @@ class PostsController < ApplicationController
 
   def my_lent
     @title = 'My lent'
-    @posts = current_user.posts.order(pub_date: :desc)
+    @posts = current_user.posts.order(pub_date: :desc).paginate(page: params[:page])
 
     render 'posts/index'
   end 

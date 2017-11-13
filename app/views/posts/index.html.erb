@@ -5,16 +5,24 @@
     <%= @title %>
   </div>
 </div>
+<%= link_to 'New Post', new_post_path %>
+<%= link_to 'Download', download_posts_path %>
+
+<br>
 
 <div class="column col-sm-12" id="main">
-  <div class="padding">
+  <div class="pagination">
+    <%= will_paginate %>
+  </div>
+  
+  <div>
     <% @posts.each do |post| %>
       <%= render post %>
     <% end %>
   </div>
+  
+  <div class="pagination">
+    <%= will_paginate %>
+  </div>
+
 </div>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
-<%= link_to 'Download', download_posts_path %>
