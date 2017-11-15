@@ -1,5 +1,5 @@
 class DownloadPostsJob < ApplicationJob
-  queue_as :default
+  queue_as :lent_download_posts
 
   def perform(*args)
     num = Post.download_posts
