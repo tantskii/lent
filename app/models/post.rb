@@ -5,10 +5,13 @@ class Post < ApplicationRecord
   
   def self.download_posts
     sources = Source.all
+    number_of_posts = 0
 
     sources.each do |source|
-      Post.create_posts_by(source)
+      number_of_posts += Post.create_posts_by(source)
     end
+
+    number_of_posts
   end
 
   # TODO сделать эту операцию в один запрос к БД
@@ -31,7 +34,7 @@ class Post < ApplicationRecord
       posts << self.create_post(item, source.id)
     end
 
-    posts
+    posts.size
   end
 
   def self.create_post(item, source_id)
