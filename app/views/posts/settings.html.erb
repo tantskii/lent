@@ -1,4 +1,4 @@
-  <table class="table table-striped">
+  <table class="table table-hover">
     <thead>
       <tr>
         <th>id</th>
@@ -19,7 +19,7 @@
             <td>
               <%= form_tag(controller: "source_users", action: "destroy", method: 'post') do %>
                 <%= hidden_field_tag(:source_id, source.id) %>
-                <%= submit_tag("Удалить", class:"btn btn-default") %>
+                <%= submit_tag("Читаю ", class:"btn btn-default") %>
               <% end %>  
             </td>
           <% else %>  
