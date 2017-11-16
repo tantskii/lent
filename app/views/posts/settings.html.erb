@@ -17,17 +17,11 @@
 
           <% if current_user.sources.include?(source) %>
             <td>
-              <%= form_tag(controller: "source_users", action: "destroy", method: 'post') do %>
-                <%= hidden_field_tag(:source_id, source.id) %>
-                <%= submit_tag("Читаю ", class:"btn btn-default") %>
-              <% end %>  
+              <%= render partial: 'posts/unread', locals: {source: source} %> 
             </td>
           <% else %>  
             <td>
-              <%= form_tag(controller: "source_users", action: "create", method: 'post') do %>
-                <%= hidden_field_tag(:source_id, source.id) %>
-                <%= submit_tag("Читать", class:"btn btn-primary") %>
-              <% end %>
+              <%= render partial: 'posts/to_read', locals: {source: source} %> 
             </td>
           <% end %>  
         </tr>

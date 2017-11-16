@@ -1,6 +1,4 @@
-@import "bootstrap";
 @import url('http://fonts.googleapis.com/css?family=Open+Sans:200,300,400,600,700');
-
 
 /* custom template */
 html, body {
@@ -45,9 +43,10 @@ a {
     position: absolute;
     right: 0;
     top: 0;
-    background-image:url('http://www.yorkpress.co.uk/resources/images/6333439/');
-    background-size:cover;
-    background-attachment:fixed;
+    /*background-image:url('http://www.yorkpress.co.uk/resources/images/6333439/');*/
+    background-image:url('http://static.zakon.kz/uploads/posts/2016-06/1465971607_1874058.jpg');
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .pagination {
@@ -108,10 +107,6 @@ a {
     margin-bottom:30px;
   }
 }
-
-
-
-
 
 
 /* bootstrap overrides */

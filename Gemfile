@@ -7,9 +7,9 @@ end
 
 gem 'devise'
 gem 'simple-rss'
-gem 'bootstrap-sass', '2.3.2.0'
+gem 'bootstrap-sass'
 gem 'will_paginate', '3.1.5'
-gem 'bootstrap-will_paginate', '0.0.9'
+gem 'bootstrap-will_paginate'
 gem 'resque'
 gem 'resque-scheduler'
 

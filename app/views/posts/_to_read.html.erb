@@ -1,0 +1,4 @@
+<%= form_tag(controller: "source_users", action: "create", method: 'post') do %>
+  <%= hidden_field_tag(:source_id, source.id) %>
+  <%= submit_tag("Читать", class:"btn btn-primary") %>
+<% end %>
