@@ -1,3 +1,19 @@
+  <section class="search-form">
+    <%= form_for :sources, controller: 'posts', action: :settings, method: :get do |f| %>
+      <div class="input-group input-group-sm">
+        <%= label_tag :keywords, nil, class: "sr-only" %>
+
+        <%= text_field_tag :keywords, nil, class: "form-control input-lg" %>
+
+        <span class="input-group-btn">
+          <%= submit_tag "Find Sources", class: "btn btn-primary btn-sm" %>
+        </span>
+      </div>
+    <% end %>
+  </section>  
+
+  <br>
+
   <table class="table table-hover">
     <thead>
       <tr>

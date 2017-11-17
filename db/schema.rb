@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113130846) do
+ActiveRecord::Schema.define(version: 20171117164432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20171113130846) do
     t.string "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index "lower((name)::text) varchar_pattern_ops", name: "sources_on_name_idx"
     t.index ["link"], name: "index_sources_on_link", unique: true
     t.index ["name"], name: "index_sources_on_name", unique: true
   end

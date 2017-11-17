@@ -11,7 +11,8 @@ class PostsController < ApplicationController
       
       expr = @keywords.split.join(" & ")
 
-      @posts = Post.where("to_tsvector('russian', title || ' ' || description) @@ to_tsquery(?)", expr)
+      @posts = Post.where("to_tsvector('russian', title || ' ' || description) @@ to_tsquery(?)",
+                          ActiveRecord::Base.connection.quote(expr))
                           .order(pub_date: :desc).paginate(page: params[:page])
     else
       @posts = Post.order(pub_date: :desc).paginate(page: params[:page])
@@ -76,7 +77,13 @@ class PostsController < ApplicationController
   end 
 
   def settings
-    @sources = Source.all
+    if params[:keywords].present?
+      keywords = params[:keywords].downcase
+      
+      @sources = Source.where("name like '%#{keywords}%'")
+    else
+      @sources = Source.all
+    end
   end  
 
   # DELETE /posts/1
