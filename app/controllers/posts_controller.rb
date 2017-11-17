@@ -12,7 +12,7 @@ class PostsController < ApplicationController
       expr = @keywords.split.join(" & ")
 
       @posts = Post.where("to_tsvector('russian', title || ' ' || description) @@ to_tsquery(?)", expr)
-                          .paginate(page: params[:page])
+                          .order(pub_date: :desc).paginate(page: params[:page])
     else
       @posts = Post.order(pub_date: :desc).paginate(page: params[:page])
     end
