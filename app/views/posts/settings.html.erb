@@ -1,3 +1,14 @@
+<div class="page-header text-muted divider">
+    <%= @title %>
+  </div>
+</div>
+
+  <div>
+    <%= link_to "Редактировать профиль", edit_user_registration_path, class: "btn btn-link"%>
+  </div>
+
+  <br>
+
   <section class="search-form">
     <%= form_for :sources, controller: 'posts', action: :settings, method: :get do |f| %>
       <div class="input-group input-group-sm">

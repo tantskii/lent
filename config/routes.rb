@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'posts/settings', to: "posts#settings"
 
-  resources :posts do 
+  resources :posts, only: [:index] do 
     collection do
       get 'my_lent'
     end
