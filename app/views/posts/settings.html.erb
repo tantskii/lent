@@ -30,7 +30,7 @@
       <tr>
         <th>id</th>
         <th>Name</th>
-        <th>Rss Link</th>
+        <th>Readers</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -40,7 +40,7 @@
         <tr>
           <td><%= source.id %></td>
           <td><%= source.name %></td>
-          <td><%= link_to 'Источник', source.link %></td>
+          <td><%= source.users.count %></td>
 
           <% if current_user.sources.include?(source) %>
             <td>
