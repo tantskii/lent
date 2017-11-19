@@ -3,6 +3,9 @@ require 'open-uri'
 class Post < ApplicationRecord
   belongs_to :source
   
+  scope :last_six_hours, 
+    -> { where("posts.created_at > ?", 6.hours.ago) }
+
   def self.download_posts
     sources = Source.all
     number_of_posts = 0

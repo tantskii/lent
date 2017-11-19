@@ -11,8 +11,12 @@ namespace :resque do
     Resque.schedule = {
       DownloadPosts: {
         every: '2h',
+      },
+      
+      RemindUsers: {
+        every: '6h'
       }
-    }
+    } 
     # Resque.schedule = YAML.load_file('config/scheduler.yml')
   end
 

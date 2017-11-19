@@ -4,6 +4,6 @@ class DownloadPosts
   def self.perform
     num = Post.download_posts
 
-    puts "Job is done #{num}"
+    puts "Job is done #{num} #{Time.now}"
   end
 end
