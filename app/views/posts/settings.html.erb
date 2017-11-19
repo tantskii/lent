@@ -14,7 +14,8 @@
       <div class="input-group input-group-sm">
         <%= label_tag :keywords, nil, class: "sr-only" %>
 
-        <%= text_field_tag :keywords, nil, class: "form-control input-lg" %>
+        <%= text_field_tag :keywords, nil, class: "form-control input-lg", 
+          placeholder: @keywords.to_s %>
 
         <span class="input-group-btn">
           <%= submit_tag "Find Sources", class: "btn btn-primary btn-sm" %>
@@ -28,8 +29,8 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>id</th>
         <th>Name</th>
+        <th>Rus Name</th>
         <th>Readers</th>
         <th>Action</th>
       </tr>
@@ -38,8 +39,8 @@
     <tbody>
       <% @sources.each do |source| %>
         <tr>
-          <td><%= source.id %></td>
           <td><%= source.name %></td>
+          <td><%= source.rus_name %></td>
           <td><%= source.users.count %></td>
 
           <% if current_user.sources.include?(source) %>

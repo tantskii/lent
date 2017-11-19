@@ -37,9 +37,9 @@ class PostsController < ApplicationController
     @title = 'Settings'
 
     if params[:keywords].present?
-      keywords = params[:keywords].downcase
+      @keywords = params[:keywords].downcase
       
-      @sources = Source.where("name like '%#{keywords}%'")
+      @sources = Source.where("name like '%#{@keywords}%' or rus_name like '%#{@keywords}%'")
     else
       @sources = Source.all
     end
