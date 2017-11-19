@@ -1,4 +1,6 @@
 class SourceUsersController < ApplicationController
+  before_action :authenticate_user!
+  
   def create
     source = Source.find(params[:source_id])
 

@@ -13,5 +13,9 @@ class User < ApplicationRecord
 
   def delete_source(source)
     sources.delete(source)
-  end    
+  end   
+
+  def send_devise_notifications(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end 
 end
