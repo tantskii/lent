@@ -43,6 +43,11 @@ class PostsController < ApplicationController
     else
       @sources = Source.all
     end
+
+    respond_to do |format|
+      format.js {render 'settings', locals: {sources: @sources}}
+      format.html
+    end
   end  
 
   # DELETE /posts/1

@@ -10,7 +10,8 @@
   </div>
 
   <section class="search-form">
-    <%= form_for :sources, controller: 'posts', action: :settings, method: :get do |f| %>
+    <%= form_for :sources, controller: 'posts', action: :settings,
+                 method: :get, remote: true do |f| %>
       <div class="input-group input-group-sm">
         <%= label_tag :keywords, nil, class: "sr-only" %>
 
@@ -26,21 +27,7 @@
 
   <br>
 
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Rus Name</th>
-        <th>Readers</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    
-    <tbody>
-      <% @sources.each do |source| %>
-        <tr id=<%= source.id %>>
-          <%= render partial: 'posts/source', locals: {source: source} %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <section id="table">
+    <%= render partial: 'posts/table', locals: {sources: @sources} %>
+  </section>
+
