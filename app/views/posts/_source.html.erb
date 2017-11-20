@@ -1,0 +1,13 @@
+  <td><%= source.name %></td>
+  <td><%= source.rus_name %></td>
+  <td><%= source.users.count %></td>
+
+  <% if current_user.sources.include?(source) %>
+    <td>
+      <%= render partial: 'posts/unread', locals: {source: source} %> 
+    </td>
+  <% else %>  
+    <td>
+      <%= render partial: 'posts/to_read', locals: {source: source} %> 
+    </td>
+  <% end %>  

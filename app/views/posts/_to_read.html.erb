@@ -1,4 +1,1 @@
-<%= form_tag(controller: "source_users", action: "create", method: 'post') do %>
-  <%= hidden_field_tag(:source_id, source.id) %>
-  <%= submit_tag("Читать", class:"btn btn-primary") %>
-<% end %>
+<%= button_to 'Читать', source_users_path(source_id: source.id), remote: true, class:"btn btn-primary"%>
