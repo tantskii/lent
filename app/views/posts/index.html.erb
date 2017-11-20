@@ -10,19 +10,6 @@
   <%= render 'posts/search' %>
 <% end %>
 
-<div class="column col-sm-12" id="main">
-  <div class="pagination">
-    <%= will_paginate %>
-  </div>
-  
-  <div>
-    <% @posts.each do |post| %>
-      <%= render post %>
-    <% end %>
-  </div>
-  
-  <div class="pagination">
-    <%= will_paginate %>
-  </div>
-
+<div class="column col-sm-12" id="main-posts">
+  <%= render partial: 'posts/main', locals: {posts: @posts} %>
 </div>

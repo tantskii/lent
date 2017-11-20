@@ -18,6 +18,11 @@ class PostsController < ApplicationController
     else
       @posts = Post.order(pub_date: :desc).paginate(page: params[:page])
     end
+
+    respond_to do |format|
+      format.js {render 'index', locals: {posts: @posts}}
+      format.html
+    end
   end
 
   def download
