@@ -3,11 +3,11 @@
   </div>
 </div>
 
-  <div>
-    <%= link_to "Редактировать профиль", edit_user_registration_path, class: "btn btn-link"%>
-  </div>
+  <div>     
+    <h4>Здесь Вы можете выбрать интересующие Вас источники и, нажав кнопку 'Читать', добавить их себе. После этого новости этого источника появятся в разделе 'My lent' и будут обновляться каждые два часа.</h4>
 
-  <br>
+    <h4>Также можно перейти к странице редактирования профиля. Для этого нажмите на данную <%= link_to "ссылку.", edit_user_registration_path%></h4>
+  </div>
 
   <section class="search-form">
     <%= form_for :sources, controller: 'posts', action: :settings, method: :get do |f| %>
@@ -18,7 +18,7 @@
           placeholder: @keywords.to_s %>
 
         <span class="input-group-btn">
-          <%= submit_tag "Find Sources", class: "btn btn-primary btn-sm" %>
+          <%= submit_tag 'Search', class: "btn btn-primary btn-sm" %>
         </span>
       </div>
     <% end %>

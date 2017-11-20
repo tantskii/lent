@@ -1,6 +1,7 @@
 require 'resque/tasks'
 require 'resque/scheduler/tasks'
 require "#{Rails.root}/app/workers/download_posts.rb"
+require "#{Rails.root}/app/workers/remind_user.rb"
 
 task "resque:setup" => :environment
 
