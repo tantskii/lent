@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post 'destroy', to: "source_users#destroy"
   resources :source_users, only: [:create]
 
+  resources :sources, only: [:new, :create]
+
   match 'download_posts', to: "posts#download", via: "get"
   
   devise_for :users
