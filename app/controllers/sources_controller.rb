@@ -1,4 +1,7 @@
 class SourcesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :check_admin
+
   def new
     @source = Source.new
   end
@@ -17,5 +20,9 @@ class SourcesController < ApplicationController
 
   def post_params
     params.require(:source).permit(:name, :rus_name, :link)
+  end
+
+  def check_admin
+    redirect_to root_path unless current_user.is_admin
   end
 end
