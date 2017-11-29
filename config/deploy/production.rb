@@ -10,7 +10,7 @@ server "mylent.ru", user: "deploy", roles: %w{app db web resque_worker resque_sc
 # server "db.example.com", user: "deploy", roles: %w{db}
 
 set :resque_environment_task, true
-set :workers, {"#{fetch(:application)}*" => 1}
+set :workers, {"*" => 1}
 
 # role-based syntax
 # ==================
